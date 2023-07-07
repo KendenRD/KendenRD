@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment_book">
+
+    <ScrollView
+        android:layout_width="362dp"
+        android:layout_height="423dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:orientation="vertical"
+
+
+            >
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите заглавие книги"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/genre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите жанр"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите год издания"
+                android:inputType="date"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/org"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите организацию издания"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/town"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите город издания"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/vol"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите объём книги (стр.)"
+                android:inputType="number"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите вид упаковки"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите размеры книги (д. ш. в.)"
+                android:inputType="number|text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/aftor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите автора"
+                android:inputType="text"
+                android:text=""
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/copy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите экземпляр"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/iN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите инвентарный номер"
+                android:inputType="number"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите место хранения"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите цену книги, р"
+                android:inputType="number|text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/sys"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Систематизация"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/signAftor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите авторский знак"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/kS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите раздел знаний"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/mixing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите сведение об издании"
+                android:inputType="text"
+                android:text=""
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="15sp"
+
+                app:met_baseColor="#0056d3"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#982360"
+                app:met_singleLineEllipsis="true" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnBackkk"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="25dp"
+        android:onClick="onClickRegBookBack"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnContri"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:onClick="onClickBookContri"
+        android:text="Внести"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_element"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#abcdef"
+    android:visibility="visible"
+    tools:context=".ArmActivity">
+
+    <LinearLayout
+        android:id="@+id/laun"
+        android:layout_width="413dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="328dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnBookIs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Книговыдача"
+            android:textSize="9sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btnCreateForm"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="Оформление формуляра"
+            android:textSize="9sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btnForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Формуляры"
+            android:textSize="9sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/btnCatalog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Каталогизатор"
+            android:textSize="9sp"
+            android:visibility="visible" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnExit"
+        android:layout_width="89dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="304dp"
+        android:layout_marginTop="16dp"
+        android:text="Выйти"
+        android:textSize="10dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bNav"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="@color/purple"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:itemIconTint="@color/bottom_navigation_background_colors"
+        app:itemTextColor="@color/bottom_navigation_background_colors"
+        app:menu="@menu/bottom_menu" />
+
+    <FrameLayout
+        android:id="@+id/fr_place"
+        android:layout_width="match_parent"
+        android:layout_height="577dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/bNav"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoComTVR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="20dp"
+        android:minHeight="48dp"
+        android:text=""
+        android:hint="Введите ФИО читателя"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/autoComTVB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="20dp"
+        android:minHeight="48dp"
+        android:text=""
+        android:hint="Введите название книги"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnBookiss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="165dp"
+        android:layout_marginBottom="91dp"
+        android:onClick="onClickForm"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/bNav"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

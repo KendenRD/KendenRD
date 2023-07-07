@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/readers"
+        android:icon="@drawable/ic_readers"
+        android:title="Читатели" />
+
+    <item
+        android:id="@+id/bookis"
+        android:icon="@drawable/ic_bookis"
+        android:title="Книговыдача" />
+    <item
+        android:id="@+id/formular"
+        android:icon="@drawable/ic_formular"
+        android:title="Формуляры" />
+    <item
+        android:id="@+id/catalogizator"
+        android:icon="@drawable/ic_catalogizator"
+        android:title="Каталогизатор" />
+</menu>

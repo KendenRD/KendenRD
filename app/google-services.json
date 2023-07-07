@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "41853254619",
+    "firebase_url": "https://kendenapp-86a1a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "kendenapp-86a1a",
+    "storage_bucket": "kendenapp-86a1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41853254619:android:1df89cf14b2bcbf1a4c5fe",
+        "android_client_info": {
+          "package_name": "com.kenden.kendenapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41853254619-aq0ip3oh8obniogresramua20ve4uap2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeTkb7lqMW8dDw-yiUXvgOvJQeBF7dl8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41853254619-aq0ip3oh8obniogresramua20ve4uap2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41853254619:android:9b4a18514f8d119aa4c5fe",
+        "android_client_info": {
+          "package_name": "com.kenden.kendenrmapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41853254619-aq0ip3oh8obniogresramua20ve4uap2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeTkb7lqMW8dDw-yiUXvgOvJQeBF7dl8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41853254619-aq0ip3oh8obniogresramua20ve4uap2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
