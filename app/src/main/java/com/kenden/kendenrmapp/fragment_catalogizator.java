@@ -2,11 +2,25 @@ package com.kenden.kendenrmapp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.kenden.kendenrmapp.models.Book;
+import com.kenden.kendenrmapp.models.Reader;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +37,11 @@ public class fragment_catalogizator extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ListView listCat;
+    private ArrayAdapter<String> adapterC;
+    private List<String> listCatD;
+    private DatabaseReference mDBase;
+    private String BOOK_KEY = "Book";
 
     public fragment_catalogizator() {
         // Required empty public constructor
@@ -58,7 +77,40 @@ public class fragment_catalogizator extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_catalogizator, container, false);
+        View view = inflater.inflate(R.layout.fragment_catalogizator, container, false);
+
+        listCat = view.findViewById(R.id.listCat);
+        listCatD = new ArrayList<>();
+        adapterC = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, listCatD);
+        listCat.setAdapter(adapterC);
+        mDBase = FirebaseDatabase.getInstance().getReference(BOOK_KEY);
+
+        showListCat();
+
+        return view;
+    }
+
+    private void showListCat()
+    {
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot)
+            {
+                if(listCatD.size() > 0)listCatD.clear();
+                for(DataSnapshot ds : snapshot.getChildren())
+                {
+                    Book book = ds.getValue(Book.class);
+                    listCatD.add(book.dTitle);
+                    assert book != null;
+                }
+                adapterC.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        mDBase.addValueEventListener(valueEventListener);
     }
 }
