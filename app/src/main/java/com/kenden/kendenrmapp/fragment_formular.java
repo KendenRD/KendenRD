@@ -50,6 +50,7 @@ public class fragment_formular extends Fragment {
     private ListView listForm;
     private ArrayAdapter<String> adapterF;
     private List<String> listFormD;
+    private List<String> listFormDD;
     private List<Formular> listTemp;
     private DatabaseReference mDataBF;
     private String FORMULAR_KEY = "formular";
@@ -92,6 +93,7 @@ public class fragment_formular extends Fragment {
 
         listForm = view.findViewById(R.id.listForm);
         listFormD = new ArrayList<>();
+        listFormDD = new ArrayList<>();
         listTemp = new ArrayList<>();
         adapterF = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, listFormD);
         listForm.setAdapter(adapterF);
@@ -114,12 +116,15 @@ public class fragment_formular extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot)
             {
                 if(listFormD.size() > 0)listFormD.clear();
+                if(listFormDD.size() > 0)listFormDD.clear();
                 if(listTemp.size() > 0)listTemp.clear();
                 for(DataSnapshot ds : snapshot.getChildren())
                 {
                     Formular formular = ds.getValue(Formular.class);
                     listFormD.add(formular.name);
                     listTemp.add(formular);
+                    listFormDD.add(formular.book);
+
                     assert formular != null;
                 }
                 adapterF.notifyDataSetChanged();
@@ -147,9 +152,10 @@ public class fragment_formular extends Fragment {
                 View fragment_form = inflater.inflate(R.layout.fragment_form, null);
                 dialog.setView(fragment_form);
 
-                final TextView bookField = fragment_form.findViewById(R.id.tvBook);
-
-                bookField.setText(formular.book);
+                final ListView listField = fragment_form.findViewById(R.id.listF);
+                final ArrayAdapter<String> adapterFF = new ArrayAdapter<>(getActivity(), android.R.layout.select_dialog_item, listFormDD);
+                listField.setAdapter(adapterFF);
+                adapterFF.notifyDataSetChanged();
 
 
                 dialog.setNegativeButton("Отменить", new DialogInterface.OnClickListener() {//кнопка отменить впл. окно

@@ -63,9 +63,7 @@ public class FormFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_form, container, false);
 
-        tvReader = view.findViewById(R.id.tvReader);
-        tvDate = view.findViewById(R.id.tvDate);
-        tvBook = view.findViewById(R.id.tvBook);
+
 
 
 
