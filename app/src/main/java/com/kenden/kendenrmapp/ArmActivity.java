@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -14,7 +13,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,11 +21,11 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,7 +46,6 @@ public class ArmActivity extends AppCompatActivity  {
     private fragment_bookis fragmentBookis = null;
     private FrameLayout fr_placee;
     private AutoCompleteTextView autoComTVR, autoComTVB;
-
     private ArrayAdapter<String> adapter, adapterB;
     private List<String> listData, listDataB;
     private fragment_formular fragmentFormular = null;
@@ -56,17 +53,12 @@ public class ArmActivity extends AppCompatActivity  {
     //private Fragment fragment = null;
     private FragmentManager fm;
     private FragmentTransaction ft;
-
     private NavigationBarView bNav;
-
-    private Button btnBookIs, btnCreateForm, btnForm, btnCatalog, btnExit, btnRegisBookk, btnBback, btnBookiss;
-
-
+    private Button  btnExit, btnBookiss;
     private DatabaseReference mDB;
     private String READER_KEY = "Reader";
     private DatabaseReference mDBase;
     private String BOOK_KEY = "Book";
-
     private DatabaseReference mDataBF;
     private String FORMULAR_KEY = "formular";
 
@@ -77,51 +69,14 @@ public class ArmActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arm);
-
-
-
         init();
-
         fbNav();
-
         BookR();
         Book();
-
-
-
-
-        btnBookIs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        btnCreateForm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                showRegisterReader();
-            }
-        });
-        btnForm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        btnCatalog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(ArmActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -130,13 +85,8 @@ public class ArmActivity extends AppCompatActivity  {
 
     public void init()
     {
-        btnBookIs=findViewById(R.id.btnBookIs);
-        btnCreateForm=findViewById(R.id.btnCreateForm);
-        btnForm=findViewById(R.id.btnForm);
-        btnCatalog=findViewById(R.id.btnCatalog);
         btnExit=findViewById(R.id.btnExit);
         root=findViewById(R.id.root_element);
-        laun=findViewById(R.id.laun);
         bNav=findViewById(R.id.bNav);
         fr_placee=findViewById(R.id.fr_place);
         autoComTVR=findViewById(R.id.autoComTVR);
@@ -236,16 +186,11 @@ public class ArmActivity extends AppCompatActivity  {
                 Intent i = getIntent();
                 finish();
                 startActivity(i);
-
-
-
-
             }
         });
 
         dialog.show();
     }
-
 
     public void fbNav()
     {
@@ -274,35 +219,6 @@ public class ArmActivity extends AppCompatActivity  {
                     autoComTVR.setVisibility(View.VISIBLE);
                     autoComTVB.setVisibility(View.VISIBLE);
                     btnBookiss.setVisibility(View.VISIBLE);
-
-
-                    /*AutoCompleteTextView actv;
-                    String[] readerList = new String[]{
-                            "Оюн Кан-оол Чургуй оглу",
-                            "Монгуш Хулер Чамзыевич",
-                            "Иванов Иван Иванович",
-                            "Ондар Геннадий Васильевич",
-                            "Вакуленко Василий Михайлович",
-                            "Хертек Кара-оол Шулууевич",
-                            "Шестаков Алексей Алексеевич",
-                            "Лукашин Федор Андреевич",
-                            "Салчак Чамзы Евгеньевич"
-                    };
-
-                    actv = findViewById(R.id.complete);
-                    ArrayAdapter arrayAdapter = new ArrayAdapter(ArmActivity.this, android.R.layout.select_dialog_item, readerList);
-                    actv.setThreshold(1);
-                    actv.setAdapter(arrayAdapter);
-
-
-                    fragmentBookis = new fragment_bookis();
-                    fm =getSupportFragmentManager();
-                    ft = fm.beginTransaction();
-                    ft.replace(R.id.fr_place, fragmentBookis);
-                    ft.addToBackStack(null);
-                    ft.commit();*/
-
-
                 }
                 if(item.getItemId() == R.id.formular)
                 {
@@ -364,7 +280,6 @@ public class ArmActivity extends AppCompatActivity  {
         //fragment_book кнопка забивания книг
         MaterialEditText title, genre, year, org, town, vol, type, size, aftor, copy, iN, place, price, sys, signAftor, kS, mixing;
 
-
         title = findViewById(R.id.title);
         genre = findViewById(R.id.genre);
         year = findViewById(R.id.year);
@@ -382,7 +297,6 @@ public class ArmActivity extends AppCompatActivity  {
         signAftor = findViewById(R.id.signAftor);
         kS = findViewById(R.id.kS);
         mixing = findViewById(R.id.mixing);
-
 
         String dTitle = title.getText().toString();
         String dGenre = genre.getText().toString();
@@ -463,18 +377,11 @@ public class ArmActivity extends AppCompatActivity  {
         String name = autoComTVR.getText().toString();
         String book = autoComTVB.getText().toString();
 
-
         Formular newFormular = new Formular(name, book, dateTime);
         mDataBF.push().setValue(newFormular);
     }
-
-
-
     public void onClickShowRegReader (View view)
     {
         showRegisterReader();
     }
-
-
-
 }

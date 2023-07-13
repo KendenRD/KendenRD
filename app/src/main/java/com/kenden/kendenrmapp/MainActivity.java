@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,15 +19,11 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.kenden.kendenrmapp.models.Emp;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,10 +32,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase db;
     private DatabaseReference ems;
     private EditText textEmail, textPass, textFullName, textDepart, textPhone, textEmailReg, textPassReg;
-    private LinearLayout lLaunch, llLaunch, lReg, llReg, lSignIn, llSignIn;
-    private TextView textSignInName;
+    private LinearLayout lLaunch, llLaunch, lReg, llReg;
 
-    private Button btnSignIn, btnReg, btnBack, btnRegis, btnBackSignOut, btnIntant;
+    private Button btnSignIn, btnReg, btnBack, btnRegis;
 
     RelativeLayout relement;
 
@@ -49,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         init();
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -75,20 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 onClickRegis();
             }
         });
-        btnBackSignOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                launcher();
-            }
-        });
-        btnIntant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ArmActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     @Override
@@ -96,17 +78,15 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser cUser = mAuth.getCurrentUser();
         if (cUser != null) {
-            showUserName();
-            Emp newEmp = new Emp();
-            String s = newEmp.getFullname();
-            //String username = "Вы вошли как: " + cUser.getEmail();
+            Intent intent = new Intent(MainActivity.this, ArmActivity.class);
+            startActivity(intent);
 
 
-            Toast.makeText(this, newEmp.getFullname(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Вы авторизованы", Toast.LENGTH_SHORT).show();
         } else {
             launcher();
 
-            Toast.makeText(this, "User null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Войдите или зарегистрируйтесь", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -123,15 +103,10 @@ public class MainActivity extends AppCompatActivity {
         llLaunch = findViewById(R.id.llLaunch);
         lReg = findViewById(R.id.lReg);
         llReg = findViewById(R.id.llReg);
-        lSignIn = findViewById(R.id.lSignIn);
-        llSignIn = findViewById(R.id.llSignIn);
-        textSignInName = findViewById(R.id.textSignInName);
         btnSignIn = findViewById(R.id.btnSignIn);
         btnReg = findViewById(R.id.btnReg);
         btnBack = findViewById(R.id.btnBack);
         btnRegis = findViewById(R.id.btnRegis);
-        btnBackSignOut = findViewById(R.id.btnBackSignOut);
-        btnIntant = findViewById(R.id.btnIntent);
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
@@ -139,22 +114,13 @@ public class MainActivity extends AppCompatActivity {
         relement = findViewById(R.id.relement);
     }
 
-    private void showUserName() {
-        lLaunch.setVisibility(View.GONE);
-        llLaunch.setVisibility(View.GONE);
-        lReg.setVisibility(View.GONE);
-        llReg.setVisibility(View.GONE);
-        lSignIn.setVisibility(View.VISIBLE);
-        llSignIn.setVisibility(View.VISIBLE);
-    }
+
 
     private void launcher() {
         lLaunch.setVisibility(View.VISIBLE);
         llLaunch.setVisibility(View.VISIBLE);
         lReg.setVisibility(View.GONE);
         llReg.setVisibility(View.GONE);
-        lSignIn.setVisibility(View.GONE);
-        llSignIn.setVisibility(View.GONE);
     }
 
     private void listReg() {
@@ -162,8 +128,6 @@ public class MainActivity extends AppCompatActivity {
         llLaunch.setVisibility(View.GONE);
         lReg.setVisibility(View.VISIBLE);
         llReg.setVisibility(View.VISIBLE);
-        lSignIn.setVisibility(View.GONE);
-        llSignIn.setVisibility(View.GONE);
     }
 
     private void onClickSignIn() {
@@ -172,12 +136,13 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
+                        Intent intent = new Intent(MainActivity.this, ArmActivity.class);
+                        startActivity(intent);
 
-                        showUserName();
-                        Toast.makeText(getApplicationContext(), "User Sign In Successeful", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Пользователь успешно авторизован", Toast.LENGTH_SHORT).show();
                     } else {
                         launcher();
-                        Toast.makeText(getApplicationContext(), "User Sign In failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Введены неверные данные", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

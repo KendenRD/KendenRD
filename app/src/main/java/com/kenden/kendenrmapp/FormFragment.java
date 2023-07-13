@@ -9,11 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FormFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FormFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
